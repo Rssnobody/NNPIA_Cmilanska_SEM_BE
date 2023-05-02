@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: book_corner
+      POSTGRES_USER: book_corner
+      POSTGRES_PASSWORD: book_corner
+    ports:
+      - 5432:5432
