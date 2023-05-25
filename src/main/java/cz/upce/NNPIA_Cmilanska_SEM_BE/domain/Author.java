@@ -21,6 +21,10 @@ public class Author {
     @Column
     private String lastName;
     @EqualsAndHashCode.Exclude
-    @ManyToMany(mappedBy = "authors")
+    @ManyToMany
+    @JoinTable(
+            name="AUTHOR_BOOKS",
+            joinColumns = @JoinColumn(name="author_id"),
+            inverseJoinColumns = @JoinColumn(name="book_id"))
     private List<Book> books = Collections.emptyList();
 }

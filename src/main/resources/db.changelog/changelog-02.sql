@@ -40,7 +40,7 @@ INSERT INTO USER_BOOKS (user_id, book_id, state_id, review_id)
 VALUES (1, 1, 3, 1),
        (1, 2, 3, 2),
        (2, 3, 3, 3),
-       (2, 3, 1, NULL);
+       (2, 1, 2, NULL);
 
 INSERT INTO AUTHOR_BOOKS (author_id, book_id)
 VALUES (1, 1),
