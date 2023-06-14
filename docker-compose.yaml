@@ -8,4 +8,4 @@ services:
       POSTGRES_USER: book_corner
       POSTGRES_PASSWORD: book_corner
     ports:
-      - 5432:5432
+      - "5432:5432"
