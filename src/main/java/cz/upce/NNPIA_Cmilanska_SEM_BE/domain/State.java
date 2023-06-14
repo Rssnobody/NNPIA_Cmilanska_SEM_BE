@@ -1,5 +1,6 @@
 package cz.upce.NNPIA_Cmilanska_SEM_BE.domain;
 
+import cz.upce.NNPIA_Cmilanska_SEM_BE.dtos.StateOutputDto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -21,4 +22,11 @@ public class State {
     @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "state")
     private List<UserBook> userBooks = Collections.emptyList();
+
+    public StateOutputDto toDto() {
+        return new StateOutputDto(
+                getStateId(),
+                getName()
+        );
+    }
 }

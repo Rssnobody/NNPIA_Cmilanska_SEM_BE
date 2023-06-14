@@ -1,5 +1,6 @@
 package cz.upce.NNPIA_Cmilanska_SEM_BE.domain;
 
+import cz.upce.NNPIA_Cmilanska_SEM_BE.dtos.AuthorOutputDto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -27,4 +28,12 @@ public class Author {
             joinColumns = @JoinColumn(name="author_id"),
             inverseJoinColumns = @JoinColumn(name="book_id"))
     private List<Book> books = Collections.emptyList();
+
+    public AuthorOutputDto toDto() {
+        return new AuthorOutputDto(
+                getAuthorId(),
+                getFirstName(),
+                getLastName()
+        );
+    }
 }

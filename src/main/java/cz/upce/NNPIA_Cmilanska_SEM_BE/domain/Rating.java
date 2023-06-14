@@ -1,5 +1,6 @@
 package cz.upce.NNPIA_Cmilanska_SEM_BE.domain;
 
+import cz.upce.NNPIA_Cmilanska_SEM_BE.dtos.RatingOutputDto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -23,4 +24,12 @@ public class Rating {
     @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "rating")
     private List<Review> reviews = Collections.emptyList();
+
+    public RatingOutputDto toDto() {
+        return new RatingOutputDto(
+                getRatingId(),
+                getName(),
+                getValue()
+        );
+    }
 }
