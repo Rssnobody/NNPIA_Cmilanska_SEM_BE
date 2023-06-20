@@ -5,6 +5,7 @@ import cz.upce.NNPIA_Cmilanska_SEM_BE.dtos.AuthorOutputDto;
 import cz.upce.NNPIA_Cmilanska_SEM_BE.dtos.BookDetailsOutputDto;
 import cz.upce.NNPIA_Cmilanska_SEM_BE.dtos.BookOutputDto;
 import cz.upce.NNPIA_Cmilanska_SEM_BE.dtos.ReviewOutputDto;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "BOOKS")
 public class Book {
@@ -35,6 +37,22 @@ public class Book {
     @JsonIgnore
     @OneToMany(mappedBy = "book")
     private List<UserBook> userBooks = Collections.emptyList();
+
+    public Book(Long bookId, String name, String picture, String description, List<Author> authors) {
+        this.bookId = bookId;
+        this.name = name;
+        this.picture = picture;
+        this.description = description;
+        this.authors = authors;
+    }
+
+    public Book(String name, String picture, String description, List<Author> authors, List<UserBook> userBooks) {
+        this.name = name;
+        this.picture = picture;
+        this.description = description;
+        this.authors = authors;
+        this.userBooks = userBooks;
+    }
 
     public BookOutputDto toDto() {
         List<AuthorOutputDto> authorDTOs
