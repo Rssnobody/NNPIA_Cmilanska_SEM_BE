@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserBookOutputDto {
+    private Long id;
     private AppUserOutputDto user;
     private BookOutputDto book;
     private StateOutputDto state;
