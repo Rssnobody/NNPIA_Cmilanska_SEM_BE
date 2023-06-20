@@ -30,6 +30,12 @@ public class Review {
     @OneToMany(mappedBy = "review")
     private List<UserBook> userBooks = Collections.emptyList();
 
+    public Review(LocalDateTime creationDate, String text, Rating rating) {
+        this.creationDate = creationDate;
+        this.text = text;
+        this.rating = rating;
+    }
+
     public ReviewOutputDto toDto() {
         return new ReviewOutputDto(
                 getReviewId(),
