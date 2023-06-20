@@ -13,10 +13,10 @@ import java.util.Date;
 public class JwtTokenProvider {
 
     @Value("${jwt.secret:secret-key}")
-    private String secret;
+    String secret;
 
     @Value("${jwt.expire-length:1800000}")
-    private long validityInMilliseconds = 1800000; // 30min
+    long validityInMilliseconds = 1800000; // 30min
 
     public String createToken(UserDetails userDetails) {
         final Claims claims = Jwts.claims().setSubject(userDetails.getUsername());
@@ -41,12 +41,12 @@ public class JwtTokenProvider {
         return (userName.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
-    private Boolean isTokenExpired(String token) {
+    Boolean isTokenExpired(String token) {
         Date expirationDate = getExpirationDateFromToken(token);
         return expirationDate.before(new Date());
     }
 
-    private Claims getClaimsFromToken(String token) {
+    Claims getClaimsFromToken(String token) {
         return Jwts.parser()
                 .setSigningKey(secret.getBytes())
                 .parseClaimsJws(token)
